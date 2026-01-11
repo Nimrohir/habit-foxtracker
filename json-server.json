@@ -1,0 +1,7 @@
+{
+  "port": 3001,
+  "host": "localhost",
+  "cors": true,
+  "watch": true,
+  "readOnly": false
+}

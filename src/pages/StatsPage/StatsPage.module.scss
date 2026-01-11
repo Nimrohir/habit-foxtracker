@@ -1,0 +1,458 @@
+/* Анимация градиента */
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.statsPage {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFEEDD 100%);
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  color: var(--text-color);
+
+  .title {
+    color: var(--text-color);
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-align: center;
+    
+    background: linear-gradient(90deg, #FF8C00 0%, #FFA500 50%, #FF8C00 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+  }
+
+  .description {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .statsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+
+  .statCard {
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(255, 140, 0, 0.1);
+    border-top: 4px solid;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.03);
+      border-radius: 16px;
+      z-index: -1;
+      transition: background 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 15px 40px rgba(255, 140, 0, 0.2),
+        0 0 60px rgba(255, 140, 0, 0.1);
+      
+      &::before {
+        background: rgba(0, 0, 0, 0.08);
+      }
+    }
+
+    &.progressCard {
+      border-top-color: #10B981;
+    }
+
+    &.completedCard {
+      border-top-color: #3B82F6;
+    }
+
+    &.bestCard {
+      border-top-color: #F59E0B;
+    }
+
+    &.streakCard {
+      border-top-color: #EF4444;
+    }
+
+    .statIcon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      color: var(--text-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .bigNumber {
+      font-size: 4rem;
+      font-weight: 800;
+      margin: 1rem 0;
+      line-height: 1;
+      
+      &.progressCard {
+        color: #10B981;
+      }
+      &.completedCard {
+        color: #3B82F6;
+      }
+      &.bestCard {
+        color: #F59E0B;
+      }
+      &.streakCard {
+        color: #EF4444;
+      }
+    }
+
+    .progressCircle {
+      width: 150px;
+      height: 150px;
+      margin: 1.5rem auto;
+      position: relative;
+      border-radius: 50%;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .progressFill {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        clip: rect(0, 150px, 150px, 75px);
+      }
+
+      .progressText {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #10B981;
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    .bestHabitName {
+      font-size: 1.2rem;
+      color: var(--text-color);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .bestProgress {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #F59E0B;
+      margin: 0.5rem 0;
+    }
+
+    p {
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .ctaSection {
+    background: linear-gradient(135deg, rgba(229, 122, 0, 0.1), rgba(255, 140, 0, 0.05));
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 3rem auto;
+    border: 3px dashed rgba(229, 122, 0, 0.3);
+
+    h2 {
+      font-size: 2rem;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #E67A00, #FF8C00);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-style: italic;
+    }
+
+    .ctaButton {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: linear-gradient(135deg, #E67A00, #FF8C00, #FFA500);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(229, 122, 0, 0.3);
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(229, 122, 0, 0.4);
+      }
+    }
+  }
+
+  .emptyState {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 240, 0.9));
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 3rem auto;
+    border: 3px dashed rgba(229, 122, 0, 0.3);
+
+    .emptyIcon {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.7;
+    }
+
+    h3 {
+      font-size: 2rem;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .emptyButton {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, #E67A00, #FF8C00);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(229, 122, 0, 0.3);
+      }
+    }
+  }
+
+  /* Адаптивность */
+  @media (max-width: 1024px) {
+    .statsContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    .title {
+      font-size: 2.2rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+    }
+
+    .statsContainer {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .statCard {
+      padding: 1.5rem;
+      
+      .progressCircle {
+        width: 120px;
+        height: 120px;
+        
+        .progressFill {
+          clip: rect(0, 120px, 120px, 60px);
+        }
+        
+        .progressText {
+          font-size: 2rem;
+        }
+      }
+
+      .bigNumber {
+        font-size: 3rem;
+      }
+
+      .bestProgress {
+        font-size: 2rem;
+      }
+    }
+
+    .ctaSection {
+      padding: 2rem;
+      margin: 2rem auto;
+      
+      h2 {
+        font-size: 1.7rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+      }
+      
+      .ctaButton {
+        padding: 0.9rem 2.5rem;
+        font-size: 1.1rem;
+      }
+    }
+
+    .emptyState {
+      padding: 3rem 1.5rem;
+      
+      .emptyIcon {
+        font-size: 4rem;
+      }
+      
+      h3 {
+        font-size: 1.7rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+      }
+      
+      .emptyButton {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+
+    .title {
+      font-size: 1.9rem;
+    }
+
+    .description {
+      font-size: 1rem;
+    }
+
+    .statCard {
+      padding: 1.2rem;
+      
+      .progressCircle {
+        width: 100px;
+        height: 100px;
+        
+        .progressFill {
+          clip: rect(0, 100px, 100px, 50px);
+        }
+        
+        .progressText {
+          font-size: 1.7rem;
+        }
+      }
+
+      .bigNumber {
+        font-size: 2.5rem;
+      }
+
+      .bestProgress {
+        font-size: 1.8rem;
+      }
+      
+      h3 {
+        font-size: 1.3rem;
+      }
+      
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .ctaSection {
+      padding: 1.5rem;
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .ctaButton {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+      }
+    }
+
+    .emptyState {
+      padding: 2rem 1rem;
+      
+      .emptyIcon {
+        font-size: 3rem;
+      }
+      
+      h3 {
+        font-size: 1.5rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .emptyButton {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+// Градиентная кнопка
+@mixin button-primary {
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--text-on-primary);
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.4);
+  }
+}
+
+// Базовая кнопка
+@mixin button-base {
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+// Карточка с эффектом при наведении
+@mixin card {
+  background: var(--card-background);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(255, 140, 0, 0.1);
+  border: 1px solid rgba(255, 140, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 140, 0, 0.2);
+  }
+}
+
+// Градиентный текст
+@mixin gradient-text {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Адаптивная сетка
+@mixin grid-responsive($min-width: 300px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: 2rem;
+}
+
+// Медиа-запросы
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile-large {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile-small {
+  @media (max-width: 480px) {
+    @content;
+  }
+}

@@ -1,0 +1,190 @@
+:root {
+  --primary-color: #E67A00;
+  --secondary-color: #FF8C00;
+  --accent-color: #FFA500;
+  --fox-brown: #8B4513;
+  --fox-light: #DEB887;
+  --background-color: #FFF8F0;
+  --card-background: #FFFFFF;
+  --text-color: #2D1B00;
+  --text-light: #5A452E;
+  --text-on-primary: #fff;
+  
+  // Мобильные переменные
+  --mobile-font-size: 14px;
+  --mobile-spacing: 0.5rem;
+  --mobile-border-radius: 8px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #FFF5E6 0%, #FFEEDD 50%, #FFE4C4 100%);
+  color: var(--text-color);
+  line-height: 1.5; // Уменьшили для мобильных
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px; // Базовый размер для десктопа
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1.5rem 1rem; // Уменьшили
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    color: #CC6D00;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+button {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-on-primary);
+  border: none;
+  padding: 10px 20px; // Уменьшили
+  border-radius: 40px; // Уменьшили
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 0.9rem; // Уменьшили
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(229, 122, 0, 0.3);
+
+  &:hover {
+    background: linear-gradient(135deg, #CC6D00, #E67A00);
+    transform: translateY(-2px); // Уменьшили
+    box-shadow: 0 5px 15px rgba(229, 122, 0, 0.4);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(229, 122, 0, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+// Специальный класс для лисьих элементов
+.fox-element {
+  position: relative;
+  
+  &::before {
+    content: '🦊';
+    position: absolute;
+    font-size: 0.7em; // Уменьшили
+    opacity: 0.6;
+  }
+}
+
+// Анимация появления следов
+@keyframes pawPrint {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(90deg);
+  }
+}
+
+// Стили для прогресс-баров
+.progress-bar {
+  background: rgba(229, 122, 0, 0.1);
+  border-radius: 8px; // Уменьшили
+  overflow: hidden;
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 8px; // Уменьшили
+    transition: width 0.8s ease;
+  }
+}
+
+// Стили для карточек
+.card {
+  background: var(--card-background);
+  border-radius: 12px; // Уменьшили
+  padding: 1rem; // Уменьшили
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(229, 122, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px); // Уменьшили
+    box-shadow: 0 8px 25px rgba(229, 122, 0, 0.15);
+  }
+}
+
+// Мобильные стили
+@media (max-width: 768px) {
+  body {
+    font-size: var(--mobile-font-size);
+    line-height: 1.4;
+  }
+
+  .main-content {
+    padding: 1rem 0.5rem; // Уменьшили
+  }
+  
+  button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0.75rem 0.25rem; // Уменьшили
+  }
+  
+  .card {
+    padding: 0.75rem; // Уменьшили
+  }
+  
+  button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,187 @@
+.header {
+  background: var(--card-background);
+  box-shadow: 0 4px 20px rgba(229, 122, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 1rem; // Уменьшили padding
+  border-bottom: 3px solid var(--primary-color);
+  background: linear-gradient(135deg, var(--card-background) 0%, #FFF5E6 100%);
+
+  .headerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0; // Уменьшили
+  }
+
+  .logoLink {
+    text-decoration: none;
+    color: inherit;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; // Уменьшили
+      position: relative;
+      padding: 0.25rem; // Уменьшили
+
+      .logoImage {
+        width: 35px; // Уменьшили
+        height: 35px; // Уменьшили
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(229, 122, 0, 0.3));
+      }
+
+      .logoEmoji {
+        font-size: 1.5rem; // Уменьшили
+        filter: drop-shadow(0 2px 4px rgba(229, 122, 0, 0.3));
+      }
+
+      .logoText {
+        font-size: 1.2rem; // Уменьшили
+        font-weight: 800;
+        color: var(--primary-color);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(90deg, #E67A00, #FF8C00, #FFA500);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+      }
+
+      .logoSubtitle {
+        position: absolute;
+        bottom: -6px; // Уменьшили
+        right: 0;
+        font-size: 0.6rem; // Уменьшили
+        color: var(--text-light);
+        font-style: italic;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1px 4px; // Уменьшили
+        border-radius: 8px; // Уменьшили
+        border: 1px dashed var(--primary-color);
+      }
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: 0.5rem; // Уменьшили
+
+    .navItem {
+      position: relative;
+
+      .navLink {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem; // Уменьшили
+        padding: 0.4rem 0.8rem; // Уменьшили
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 600;
+        border-radius: 20px; // Уменьшили
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        background: linear-gradient(var(--card-background), #FFF8F0);
+        font-size: 0.85rem; // Уменьшили
+
+        &:hover {
+          color: var(--primary-color);
+          border-color: rgba(229, 122, 0, 0.2);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(229, 122, 0, 0.15);
+        }
+
+        &.active {
+          color: var(--text-on-primary);
+          font-weight: 700;
+          border-color: var(--primary-color);
+
+          .activeBackground {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-color), #FFA500);
+            border-radius: 20px; // Уменьшили
+            z-index: -1;
+            box-shadow: 0 4px 15px rgba(229, 122, 0, 0.3);
+          }
+
+          .foxPaw {
+            color: white;
+          }
+        }
+
+        .foxPaw {
+          font-size: 0.7rem; // Уменьшили
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 0.5rem; // Уменьшили
+
+    .headerContent {
+      flex-direction: row; // ОСНОВНОЕ ИЗМЕНЕНИЕ: остаёмся горизонтальными
+      gap: 0.5rem; // Уменьшили
+      padding: 0.5rem 0; // Уменьшили
+    }
+
+    .logo {
+      .logoText {
+        font-size: 1rem; // Уменьшили
+      }
+      .logoSubtitle {
+        display: none; // Скрываем на мобильных
+      }
+    }
+
+    .nav {
+      width: auto; // Убираем 100%
+      justify-content: flex-end; // Прижимаем к правому краю
+      
+      .navItem {
+        .navLink {
+          padding: 0.3rem 0.6rem; // Уменьшили
+          font-size: 0.8rem; // Уменьшили
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    .logo {
+      .logoText {
+        display: none; // Скрываем текст логотипа на очень маленьких экранах
+      }
+    }
+    
+    .nav {
+      gap: 0.25rem; // Уменьшили
+      
+      .navItem {
+        .navLink {
+          padding: 0.25rem 0.5rem; // Уменьшили
+          font-size: 0.75rem; // Уменьшили
+          
+          .foxPaw {
+            display: none; // Скрываем иконки на очень маленьких экранах
+          }
+        }
+      }
+    }
+  }
+}

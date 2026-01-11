@@ -1,0 +1,585 @@
+.homePage {
+  min-height: 100vh;
+  padding: 1rem 0.5rem; // Уменьшили
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FFF5E6 0%, #FFEEDD 30%, #FFE4C4 100%);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 204, 153, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(255, 153, 102, 0.1) 0%, transparent 20%);
+
+  .foxPawTrail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    .foxPaw {
+      position: absolute;
+      font-size: 0.9rem; // Уменьшили
+      opacity: 0.7;
+      filter: drop-shadow(0 2px 4px rgba(229, 122, 0, 0.3));
+      transform-origin: center;
+    }
+  }
+
+  .contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 0.5rem; // Добавили
+  }
+
+  .titleContainer {
+    position: relative;
+    margin-bottom: 1rem; // Уменьшили
+
+    .title {
+      font-size: 1.8rem; // Уменьшили значительно
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+      .titleHighlight {
+        background: linear-gradient(90deg, #E67A00, #FF8C00, #FFA500, #FFB733);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 300% auto;
+        animation: shimmer 3s ease-in-out infinite alternate;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -3px; // Уменьшили
+          left: 0;
+          right: 0;
+          height: 2px; // Уменьшили
+          background: linear-gradient(90deg, #E67A00, #FF8C00, #FFA500);
+          border-radius: 2px;
+        }
+      }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+  }
+
+  .subtitleContainer {
+    margin-bottom: 2rem; // Уменьшили
+    padding: 1rem; // Уменьшили
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 240, 0.9));
+    border-radius: 12px; // Уменьшили
+    box-shadow: 0 5px 15px rgba(229, 122, 0, 0.1);
+    border: 1px dashed rgba(229, 122, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px; // Уменьшили
+      background: linear-gradient(90deg, #E67A00, #FF8C00, #FFA500);
+    }
+
+    .subtitle {
+      font-size: 1.3rem; // Уменьшили значительно
+      color: var(--text-color);
+      margin-bottom: 1rem; // Уменьшили
+      font-weight: 700;
+      line-height: 1.3;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem; // Уменьшили
+
+      .subtitleLine {
+        display: block;
+        position: relative;
+        
+        &::before {
+          content: '🦊';
+          margin-right: 6px; // Уменьшили
+          font-size: 1rem; // Уменьшили
+        }
+      }
+    }
+
+    .description {
+      font-size: 0.9rem; // Уменьшили значительно
+      color: var(--text-light);
+      line-height: 1.5; // Уменьшили
+      max-width: 100%;
+      margin: 0 auto;
+      font-style: italic;
+      background: linear-gradient(90deg, var(--text-color), var(--text-light));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: textShimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes textShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; // Уменьшили
+    margin-bottom: 2rem; // Уменьшили
+    flex-wrap: wrap;
+
+    .statCard {
+      background: linear-gradient(135deg, var(--card-background), #FFF8F0);
+      border-radius: 15px; // Уменьшили
+      padding: 1rem; // Уменьшили
+      min-width: 140px; // Уменьшили
+      max-width: 160px; // Добавили
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(229, 122, 0, 0.15);
+      border: 1px solid rgba(229, 122, 0, 0.1);
+      transition: all 0.4s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px; // Уменьшили
+        background: linear-gradient(90deg, #E67A00, #FF8C00, #FFA500);
+      }
+
+      .statContent {
+        position: relative;
+        z-index: 2;
+
+        .statIcon {
+          font-size: 1.8rem; // Уменьшили
+          margin-bottom: 0.5rem; // Уменьшили
+          display: inline-block;
+        }
+
+        .statNumber {
+          font-size: 2rem; // Уменьшили значительно
+          font-weight: 900;
+          color: var(--primary-color);
+          display: block;
+          margin-bottom: 0.25rem; // Уменьшили
+          line-height: 1;
+          text-shadow: 1px 1px 2px rgba(229, 122, 0, 0.2);
+        }
+
+        .statLabel {
+          font-size: 0.8rem; // Уменьшили
+          color: var(--text-light);
+          display: block;
+          max-width: 100%;
+          margin: 0 auto 0.5rem; // Уменьшили
+          font-weight: 500;
+        }
+
+        .statProgress {
+          height: 4px; // Уменьшили
+          background: rgba(229, 122, 0, 0.1);
+          border-radius: 2px; // Уменьшили
+          margin-top: 0.5rem; // Уменьшили
+          overflow: hidden;
+
+          .progressBar {
+            height: 100%;
+            background: linear-gradient(90deg, #E67A00, #FF8C00);
+            border-radius: 2px; // Уменьшили
+          }
+        }
+      }
+    }
+  }
+
+  .buttonWrapper {
+    margin-bottom: 2rem; // Уменьшили
+
+    .ctaButton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 2rem; // Уменьшили
+      background: linear-gradient(135deg, #E67A00, #FF8C00, #FFA500);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px; // Уменьшили
+      font-weight: 800;
+      font-size: 1rem; // Уменьшили
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 
+        0 8px 20px rgba(229, 122, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px; // Уменьшили
+
+      &:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 
+          0 15px 30px rgba(229, 122, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        
+        &::after {
+          transform: translateX(100%);
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: transform 0.6s ease;
+      }
+
+      .buttonTrail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, 
+          transparent 0%, 
+          rgba(255, 255, 255, 0.2) 25%, 
+          rgba(255, 255, 255, 0.4) 50%, 
+          rgba(255, 255, 255, 0.2) 75%, 
+          transparent 100%
+        );
+        background-size: 200% 100%;
+        border-radius: 30px; // Уменьшили
+        z-index: -1;
+      }
+    }
+  }
+
+  .features {
+    margin-bottom: 2rem; // Уменьшили
+
+    .featuresTitle {
+      font-size: 1.5rem; // Уменьшили
+      color: var(--text-color);
+      margin-bottom: 1.5rem; // Уменьшили
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px; // Уменьшили
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px; // Уменьшили
+        height: 3px; // Уменьшили
+        background: linear-gradient(90deg, #E67A00, #FF8C00);
+        border-radius: 2px;
+      }
+    }
+
+    .featuresGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem; // Уменьшили
+      max-width: 1000px;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+
+      .featureCard {
+        background: linear-gradient(135deg, var(--card-background), #FFF8F0);
+        border-radius: 12px; // Уменьшили
+        padding: 1rem; // Уменьшили
+        box-shadow: 0 5px 15px rgba(229, 122, 0, 0.1);
+        border: 1px solid rgba(229, 122, 0, 0.15);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px; // Уменьшили
+          background: linear-gradient(90deg, #E67A00, #FF8C00);
+        }
+
+        .featureIcon {
+          width: 50px; // Уменьшили
+          height: 50px; // Уменьшили
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem; // Уменьшили
+          margin: 0 auto 1rem; // Уменьшили
+          border: 2px solid; // Уменьшили
+          transition: all 0.3s ease;
+        }
+
+        h3 {
+          font-size: 1.1rem; // Уменьшили
+          color: var(--text-color);
+          margin-bottom: 0.5rem; // Уменьшили
+          font-weight: 700;
+        }
+
+        p {
+          color: var(--text-light);
+          line-height: 1.5; // Уменьшили
+          font-size: 0.85rem; // Уменьшили
+        }
+      }
+    }
+  }
+
+  .extraContent {
+    margin: 2rem 0; // Уменьшили
+    padding: 1.5rem; // Уменьшили
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 240, 0.95));
+    border-radius: 15px; // Уменьшили
+    box-shadow: 0 8px 20px rgba(229, 122, 0, 0.15);
+    border: 2px solid rgba(229, 122, 0, 0.2);
+    
+    h2 {
+      font-size: 1.5rem; // Уменьшили
+    }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 1rem; // Уменьшили
+      flex-wrap: wrap;
+
+      .step {
+        background: var(--card-background);
+        border-radius: 12px; // Уменьшили
+        padding: 1rem; // Уменьшили
+        max-width: 100%;
+        width: 100%;
+        box-shadow: 0 5px 15px rgba(229, 122, 0, 0.15);
+        border: 1px solid rgba(229, 122, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        .stepHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem; // Уменьшили
+
+          .stepNumber {
+            width: 35px; // Уменьшили
+            height: 35px; // Уменьшили
+            background: linear-gradient(135deg, #E67A00, #FF8C00);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem; // Уменьшили
+            box-shadow: 0 3px 8px rgba(229, 122, 0, 0.3);
+          }
+
+          .stepIcon {
+            font-size: 1.5rem; // Уменьшили
+            filter: drop-shadow(0 2px 4px rgba(229, 122, 0, 0.3));
+          }
+        }
+
+        h3 {
+          font-size: 1.2rem; // Уменьшили
+          color: var(--text-color);
+          margin-bottom: 0.5rem; // Уменьшили
+          font-weight: 700;
+        }
+
+        p {
+          color: var(--text-light);
+          line-height: 1.5;
+          font-size: 0.85rem; // Уменьшили
+        }
+      }
+    }
+  }
+
+  .callToAction {
+    margin-top: 2rem; // Уменьшили
+    padding: 1.5rem; // Уменьшили
+    background: linear-gradient(135deg, rgba(229, 122, 0, 0.1), rgba(255, 140, 0, 0.05));
+    border-radius: 15px; // Уменьшили
+    border: 2px dashed rgba(229, 122, 0, 0.3);
+
+    h3 {
+      font-size: 1.3rem; // Уменьшили
+      color: var(--text-color);
+      margin-bottom: 0.5rem; // Уменьшили
+      font-weight: 800;
+      background: linear-gradient(90deg, #E67A00, #FF8C00);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 0.9rem; // Уменьшили
+      color: var(--text-light);
+      max-width: 100%;
+      margin: 0 auto;
+      font-style: italic;
+    }
+  }
+}
+
+// Адаптивность для планшетов (768px и меньше)
+@media (max-width: 768px) {
+  .homePage {
+    padding: 1rem 0.5rem;
+
+    .titleContainer {
+      .title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .subtitleContainer {
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+
+      .subtitle {
+        font-size: 1.1rem;
+      }
+
+      .description {
+        font-size: 0.8rem;
+      }
+    }
+
+    .stats {
+      gap: 0.8rem;
+
+      .statCard {
+        min-width: 120px;
+        max-width: 130px;
+        padding: 0.8rem;
+
+        .statNumber {
+          font-size: 1.5rem;
+        }
+        
+        .statLabel {
+          font-size: 0.7rem;
+        }
+      }
+    }
+
+    .buttonWrapper {
+      .ctaButton {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 25px;
+      }
+    }
+
+    .features {
+      .featuresTitle {
+        font-size: 1.3rem;
+      }
+
+      .featuresGrid {
+        gap: 0.8rem;
+
+        .featureCard {
+          padding: 0.8rem;
+          
+          h3 {
+            font-size: 1rem;
+          }
+          
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .extraContent {
+      padding: 1rem;
+      margin: 1.5rem 0;
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .steps {
+        gap: 0.8rem;
+
+        .step {
+          padding: 0.8rem;
+          
+          h3 {
+            font-size: 1rem;
+          }
+          
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Адаптивность для телефонов (480px и меньше)
+@media (max-width: 480px) {
+  .homePage {
+    .stats {
+      .statCard {
+        min-width: calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
+      }
+    }
+
+    .featuresGrid {
+      grid-template-columns: 1fr !important;
+    }
+    
+    .steps {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  }
+}
